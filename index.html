@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Programming - College Project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #7f53ac, #647dee);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd166;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #e3e3e3;
+    }
+
+    .hero .btn {
+      background: #ffd166;
+      color: #000;
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Topics Section */
+    .topics-section {
+      background: #fff;
+      color: #000;
+      padding: 60px 20px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      margin-top: 60px;
+    }
+
+    .topics-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2em;
+      color: #222;
+    }
+
+    .topics-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .topic-btn {
+      background: #ffa500;
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .topic-btn:hover {
+      background: #ffb733;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .hero h1 {
+        font-size: 2.2em;
+      }
+      .topics-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .topic-btn {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">WEB-CODERS</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#topics">Programs</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>The Power of Java Programming</h1>
+    <h2>VASU DEV-4041/23-</h2>
+    <h2>Mentor: MR Chetan Gupta</h2>
+    <p>Build, innovate, and explore with the language that runs the world.</p>
+    <a href="#topics" class="btn">Explore Topics</a>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="topics-section" id="topics">
+    <h2>Core Java Programming - Topics</h2>
+    <div class="topics-container" id="topicsContainer">
+      <!-- Buttons will be dynamically added here -->
+    </div>
+  </section>
+
+  <script>
+    // Java topics array
+    const topics = [
+      "APPLETS", "BASIC PROGRAMMING CONSTRUCTS", "DATA CONVERSION",
+      "DELEGATION EVENT MODEL", "EXCEPTION HANDLING", "FUNCTIONS",
+      "GRAPHICAL USER INTERFACE (AWT)", "GRAPHICAL USER INTERFACE (SWINGS)",
+      "INHERITANCE", "INPUT/OUTPUT", "INTERFACES", "JAVA DATABASE CONNECTIVITY",
+      "MULTI-DIMENSION ARRAYS", "MULTITHREADING", "OBJECT ORIENTED PROGRAMMING",
+      "PACKAGES", "SINGLE DIMENSION ARRAYS", "STRINGS"
+    ];
+
+    const container = document.getElementById("topicsContainer");
+
+    topics.forEach((topic, i) => {
+      const btn = document.createElement("button");
+      btn.className = "topic-btn";
+      btn.textContent = topic;
+
+      // ✅ Make APPLETS button redirect to applets.html
+      if (topic === "APPLETS") {
+        btn.onclick = () => window.location.href = "Applets.html";
+      }
+      else if (topic === "BASIC PROGRAMMING CONSTRUCTS") {
+    btn.onclick = () => window.location.href = "BasicProgrammingConstructs.html";
+  }
+  else if (topic === "DATA CONVERSION") {
+    btn.onclick = () => window.location.href = "DataConversion.html";
+  }
+  else if (topic === "DELEGATION EVENT MODEL") {
+    btn.onclick = () => window.location.href = "DelegationEventModel.html";
+  }
+  else if (topic === "EXCEPTION HANDLING") {
+    btn.onclick = () => window.location.href = "ExceptionHandling.html";
+  }
+  else if (topic === "FUNCTIONS") {
+    btn.onclick = () => window.location.href = "Functions.html";
+  }
+  else if (topic === "GRAPHICAL USER INTERFACE (AWT)") {
+    btn.onclick = () => window.location.href = "GUI_AWT.html";
+  }
+  else if (topic === "GRAPHICAL USER INTERFACE (SWINGS)") {
+    btn.onclick = () => window.location.href = "GUI_Swings.html";
+  }
+  else if (topic === "INHERITANCE") {
+    btn.onclick = () => window.location.href = "Inheritance.html";
+  }
+  else if (topic === "INPUT/OUTPUT") {
+    btn.onclick = () => window.location.href = "InputOutput.html";
+  }
+  else if (topic === "INTERFACES") {
+    btn.onclick = () => window.location.href = "Interfaces.html";
+  }
+  else if (topic === "JAVA DATABASE CONNECTIVITY") {
+    btn.onclick = () => window.location.href = "JavaDatabaseConnectivity.html";
+  }
+  else if (topic === "MULTI-DIMENSION ARRAYS") {
+    btn.onclick = () => window.location.href = "MultiDimensionArrays.html";
+  }
+  else if (topic === "MULTITHREADING") {
+    btn.onclick = () => window.location.href = "Multithreading.html";
+  }
+  else if (topic === "OBJECT ORIENTED PROGRAMMING") {
+    btn.onclick = () => window.location.href = "ObjectOrientedProgramming.html";
+  }
+  else if (topic === "PACKAGES") {
+    btn.onclick = () => window.location.href = "Packages.html";
+  }
+  else if (topic === "SINGLE DIMENSION ARRAYS") {
+    btn.onclick = () => window.location.href = "SingleDimensionArrays.html";
+  }
+  else if (topic === "STRINGS") {
+    btn.onclick = () => window.location.href = "Strings.html";
+  }
+      
+    btn.style.animationDelay = `${i * 0.1}s`;
+    container.appendChild(btn);
+    });
+
+  </script>
+</body>
+</html>
